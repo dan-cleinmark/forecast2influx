@@ -10,7 +10,7 @@ INFLUX_HOST = 'localhost'
 INFLUX_PORT = 8086
 INFLUX_USER = 'root'
 INFLUX_PASS = 'root'
-INFLUX_DB = 'forecast.io'
+INFLUX_DB = 'forecast-io'
 
 lat = 38.7892
 lon = -90.5653
