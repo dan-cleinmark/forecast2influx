@@ -24,24 +24,25 @@ def main():
 
     api_key = os.environ['FORECAST_IO_KEY']
     forecast = forecastio.load_forecast(api_key, lat, lon)
-    write_influx(influx, forecast.currently().d)
+    write_influx(influx, forecast.currently().d, lat, lon)
 
 
-def tstat_point(data):
+def forecast_point(data, lat, lon):
     body = []
-    for k, v in tstat.tstat['raw'].iteritems():
+    for k, v in data.iteritems():
         if isinstance(v, numbers.Number):
             body.append({
                 "measurement": k,
                 "tags": {
-                  "name": tstat.name['raw']},
+                  "lat": lat,
+                  "lon": lon},
                 "fields": {
                   "value": v}})
     return body
 
 
-def write_influx(influx, data):
-    influx.write_points(tstat_point(data))    
+def write_influx(influx, data, lat, lon):
+    influx.write_points(forecast_point(data, lat, lon))    
 
 
 if __name__ == "__main__":
