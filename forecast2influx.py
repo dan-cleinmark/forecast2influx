@@ -20,7 +20,7 @@ def main():
     influx = InfluxDBClient(INFLUX_HOST, INFLUX_PORT,
                             INFLUX_USER, INFLUX_PASS,
                             INFLUX_DB)
-    influx.create_database(INFLUX_DB)
+    #influx.create_database(INFLUX_DB)
 
     api_key = os.environ['FORECAST_IO_KEY']
     forecast = forecastio.load_forecast(api_key, lat, lon)
