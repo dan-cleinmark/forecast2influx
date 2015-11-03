@@ -37,7 +37,7 @@ def forecast_point(data, lat, lon):
                   "lat": lat,
                   "lon": lon},
                 "fields": {
-                  "value": v}})
+                  "value": round(v, 2)}})
     return body
 
 
